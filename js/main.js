@@ -1,6 +1,6 @@
 let elForm = document.querySelector(".form");
 let elInput = document.querySelector(".raiting");
-let movieArr = movies.slice(0, 8);
+let movieArr = movies.slice(0,15);
 
 function normolize(array) {
   let newArray = [];
@@ -44,8 +44,7 @@ render(newArray, elMovieList);
 
 elForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  let elInputValue = document.querySelector(".raiting");
-  value.trim();
+  let elInputValue = Number(document.querySelector(".raiting").value.trim())
 
   let inputArr = [];
 
