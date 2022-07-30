@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies js</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner pt-3 pb-5">
+            <h1 class="text-center m-0">Movies catalog</h1>
+            <div class="row mt-3">
+                <div class="col-4">
+                    <form class="form" action="https://echo.htmlacademy.ru/" method="POST">
+                        <input class="form-control mb-3" type="text" name="ave" placeholder="ave" aria-label="ave"
+                            />
+                        <input class="form-control mb-3 raiting" type="text" name="number" placeholder="raiting" aria-label="number"
+                            />
+                        <select class="form-select mb-3" name="select-number" id="select-number" aria-label="number">
+                            <option value="all" selected>all</option>
+                            <option value="1">one</option>
+                            <option value="2">two</option>
+                            <option value="3">three</option>
+                            <option value="4">four</option>
+                            <option value="5">five</option>
+                        </select>
+                        <input class="form-control mb-3" type="text" list="datalistRating"
+                            placeholder="Rating (hight to low)" />
+                        <datalist id="datalistRating">
+                            <option value="hight to low"></option>
+                            <option value="low to hight"></option>
+                        </datalist>
+                        <button class="btn btn-primary col-12" type="submit">Search</button>
+                    </form>
+
+                    <h2 class="mt-4 mb-2">Bookmared movies</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <p class="fw-bold m-0">Avangers: Infinity war</p>
+                            <button class="btn btn-danger mt-2" type="button">Remove</button>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold m-0">The Avangers</p>
+                            <button class="btn btn-danger mt-2" type="button">Remove</button>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold m-0">12 years a Slave</p>
+                            <button class="btn btn-danger mt-2" type="button">Remove</button>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-8">
+                    <h4 class="m-0">Seach results: 39</h4>
+                    <div class="alert alert-success mt-2" role="alert">
+                        Use the form ong the left to search for a movie
+                    </div>
+
+                    <div class="row" id="movielist">
+                        
+                    </div>
+
+                    <nav class="d-flex justify-content-center mt-5" aria-label="next list">
+                        <ul class="pagination">
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">1</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="card">
+        <div class="col-6">
+            <div class="card" style="width: 100%;">
+                <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="0" class="active" aria-current="true"
+                            aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img style="object-fit: cover;" src="./images/avangers.jpg"
+                                class="d-block w-100 img-fluid" width="414" height="233" alt="avangers">
+                        </div>
+                        <div class="carousel-item">
+                            <img style="object-fit: cover;" src="./images/avangers-last.jpg"
+                                class="d-block w-100 img-fluid" width="414" height="233"
+                                alt="avangers last">
+                        </div>
+                        <div class="carousel-item">
+                            <img style="object-fit: cover;" src="./images/avangers-triller.jpg"
+                                class="d-block w-100 img-fluid" width="414" height="233"
+                                alt="avangers-triller">
+                        </div>
+                        <div class="carousel-item">
+                            <img style="object-fit: cover;" src="./images/avangers-game.jpg"
+                                class="d-block w-100 img-fluid" width="414" height="233"
+                                alt="avangers-game">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div> -->
+                <img style="object-fit: cover;" src="./images/avangers.jpg"
+                                class="d-block w-100 img-fluid img-movie" width="414" height="233" alt="avangers">
+                <div class="card-body">
+                    <h5 class="card-title m-0 title-movie">Avangers: Infinity war</h5>
+                    <div class="d-flex mt-2">
+                        <img class="mt-1" src="./images/calendar.svg" alt="date" width="18" height="18">
+                        <p class="ms-2 year-movie">2018</p>
+                    </div>
+                    <div class="d-flex">
+                        <img class="mt-1" src="./images/star.svg" alt="date" width="18" height="18">
+                        <p class="ms-2 raiting-movie">8.7</p>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
+                        <a href="#" class="btn  btn-outline-primary trailer-movie" target="_blank">Watch trailer</a>
+                        <!-------Burron trigger Modal------->
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">More info</button>
+                        <button type="button" class="btn btn-outline-success">Bookmark</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!----- MODAL----->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Avangers: Infinity war</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Avengers: Infinity War is a 2018 American superhero film based on the Marvel Comics superhero
+                        team the Avengers. Produced by Marvel Studios and distributed by Walt Disney Studios Motion
+                        Pictures, it is the sequel to The Avengers (2012) and Avengers: Age of Ultron (2015), and the
+                        19th film in the Marvel Cinematic Universe (MCU). Directed by Anthony and Joe Russo and written
+                        by Christopher Markus and Stephen McFeely, the film features an ensemble cast including Robert
+                        Downey Jr., Chris Hemsworth, Mark Ruffalo, Chris Evans, Scarlett Johansson, Benedict
+                        Cumberbatch, Don Cheadle, Tom Holland, Chadwick Boseman, Paul Bettany, Elizabeth Olsen, Anthony
+                        Mackie, Sebastian Stan, Danai Gurira, Letitia Wright, Dave Bautista, Zoe Saldaña, Josh Brolin,
+                        and Chris Pratt. In the film, the Avengers and the Guardians of the Galaxy attempt to prevent
+                        Thanos from collecting the six all-powerful Infinity Stones as part of his quest to kill half of
+                        all life in the universe.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----- MODAL----->
+    <div class="modal fade" id="staticUzb" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">The Avengers</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <p>
+                            Marvel's The Avengers (classified under the name Marvel Avengers Assemble in the United
+                            Kingdom and Ireland), or simply The Avengers, is a 2012 American superhero film based on the
+                            Marvel Comics superhero team of the same name. Produced by Marvel Studios and distributed by
+                            Walt Disney Studios Motion Pictures,it is the sixth film in the Marvel Cinematic Universe
+                            (MCU). Written and directed by Joss Whedon, the film features an ensemble cast including
+                            Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, and
+                            Jeremy Renner as the Avengers, alongside Tom Hiddleston, Clark Gregg, Cobie Smulders,
+                            Stellan Skarsgård, and Samuel L. Jackson. In the film, Nick Fury and the spy agency
+                            S.H.I.E.L.D. recruit Tony Stark, Steve Rogers, Bruce Banner, Thor, Natasha Romanoff, and
+                            Clint Barton to form a team capable of stopping Thor's brother Loki from subjugating Earth.
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="./js/movies.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/bootstrap.min.js"></script>
